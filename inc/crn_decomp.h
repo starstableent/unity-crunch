@@ -20,10 +20,27 @@
 #ifdef WIN32
 #include <memory.h>
 #else
-#include <malloc.h>
 #endif
 #include <stdarg.h>
 #include <new>  // needed for placement new, _msize, _expand
+
+
+
+#ifdef __APPLE__
+#include <malloc/malloc.h>
+#else
+#include <malloc.h>
+#endif
+#if CRNLIB_USE_WIN32_API
+#include "crn_winhdr.h"
+#endif
+
+#define CRNLIB_MEM_STATS 0
+
+#ifdef __APPLE__
+#define malloc_usable_size malloc_size
+#endif
+
 
 #define CRND_RESTRICT __restrict
 
