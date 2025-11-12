@@ -1,9 +1,9 @@
 echo off
-mkdir BuildVS2015
-cd BuildVS2015
-cmake -G "Visual Studio 14" --build ../
+mkdir BuildVS2017
+cd BuildVS2017
+cmake -G "Visual Studio 15" --build ../
 cd..
-cmake  --build BuildVS2015 --config Debug
-cmake  --build BuildVS2015 --config Release
+cmake  --build BuildVS2017 --config Debug
+cmake  --build BuildVS2017 --config Release
 
 rem copy BuildVS2015\zlib.dir\Release\zlib.pdb BuildVS2015\lib\release\zlib.pdb
