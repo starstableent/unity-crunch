@@ -44,7 +44,6 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 	foreach(_opt IN ITEMS ${RELEASE_FLAGS})
 		add_compile_options($<$<CONFIG:Release>:${_opt}>)
 	endforeach()
-	
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif()
 
