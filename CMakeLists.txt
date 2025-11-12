@@ -52,6 +52,7 @@ list(APPEND FILTER "${CMAKE_CURRENT_SOURCE_DIR}/crnlib/*.h")
 list(APPEND FILTER "${CMAKE_CURRENT_SOURCE_DIR}/crnlib/*.hpp")
 list(APPEND FILTER "${CMAKE_CURRENT_SOURCE_DIR}/crnlib/lzma_*.cpp")
 list(APPEND FILTER "${CMAKE_CURRENT_SOURCE_DIR}/crnlib/crn_*.cpp")
+list(APPEND FILTER "${CMAKE_CURRENT_SOURCE_DIR}/crnlib/crnlib.cpp")
 	
 # Gather source
 file(GLOB_RECURSE FILE_LIST ${FILTER})
