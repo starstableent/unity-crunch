@@ -67,7 +67,7 @@ foreach(_source IN ITEMS ${FILE_LIST})
 endforeach()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/crnlib)
-add_library(crunch ${SRC_FILE_LIST} )
+add_library(crnlib ${SRC_FILE_LIST} )
 
 
 
