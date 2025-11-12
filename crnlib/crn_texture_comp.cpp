@@ -49,7 +49,8 @@ bool create_compressed_texture(const crn_comp_params& params, crnlib::vector<uin
       ((local_params.m_file_type == cCRNFileTypeCRN) && ((local_params.m_flags & cCRNCompFlagManualPaletteSizes) != 0))) {
     if ((local_params.m_file_type == cCRNFileTypeCRN) ||
         ((local_params.m_file_type == cCRNFileTypeDDS) && (local_params.m_quality_level < cCRNMaxQualityLevel))) {
-      console::info("Compressing using quality level %i", local_params.m_quality_level);
+      if (params.m_flags & cCRNCompFlagDebugging)
+        console::info("Compressing using quality level %i", local_params.m_quality_level);
     }
     if (local_params.m_format == cCRNFmtDXT3) {
       if (local_params.m_file_type == cCRNFileTypeCRN)
@@ -130,8 +131,8 @@ bool create_compressed_texture(const crn_comp_params& params, crnlib::vector<uin
           }
         }
       }
-
-      console::info("Compressing to quality level %u", trial_quality);
+      if (params.m_flags & cCRNCompFlagDebugging)
+        console::info("Compressing to quality level %u", trial_quality);
 
       float bitrate = 0.0f;
 
@@ -414,7 +415,8 @@ bool create_texture_mipmaps(mipmapped_texture& work_tex, const crn_comp_params& 
     gen_params.m_max_mips = mipmap_params.m_max_levels;
     gen_params.m_min_mip_size = mipmap_params.m_min_mip_size;
 
-    console::info("Generating mipmaps using filter \"%s\"", pFilter);
+    if (params.m_flags & cCRNCompFlagDebugging)
+      console::info("Generating mipmaps using filter \"%s\"", pFilter);
 
     timer tm;
     tm.start();
@@ -424,7 +426,8 @@ bool create_texture_mipmaps(mipmapped_texture& work_tex, const crn_comp_params& 
     }
     double t = tm.get_elapsed_secs();
 
-    console::info("Generated %u mipmap levels in %3.3fs", work_tex.get_num_levels() - 1, t);
+    if (params.m_flags & cCRNCompFlagDebugging)
+      console::info("Generated %u mipmap levels in %3.3fs", work_tex.get_num_levels() - 1, t);
   }
 
   return true;
